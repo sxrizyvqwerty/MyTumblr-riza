@@ -1,3 +1,20 @@
+<?php
+//start the session
+SESSION_START();
+
+//check if the session variables are set or merong laman ang session variables or naga exist sila
+//this is to check if naka login yung account or hindi
+if (isset($_SESSION['ses_username'])===false){
+    header("Location: index.php?logfirst");
+
+}else if (isset($_REQUEST['logout'])===true){
+    session_destroy();
+    header("Location: index.php?logout");
+}
+
+
+?>
+
 <!doctype html>
                         <html>
                             <head>
@@ -13,7 +30,7 @@
     transform: translateY(5rem)
 }
 .cover {
-    background-image: url('images/photo-profile-background.avif');
+    background-image: url('images/s.jpg');
     background-size: cover;
     background-repeat: no-repeat
 }
@@ -32,13 +49,17 @@ body {
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="images/photo-profile.avif" alt="..." width="150" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit Profile</a>
+                    <div class="profile mr-3"><img src="images/ako.jpg" alt="..." width="150" class="rounded mb-2 img-thumbnail">
+
+                        <a href="?logout" class="btn btn-outline-dark btn-sm btn-block">Sign Out</a>
 
 
                     </div>
                     <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">Ryan Clifford L. Perez</h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Marinduque PH
+                        <h4 class="mt-0 mb-0"><?php echo $_SESSION['ses_fullname']; ?> </h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+
+                            <?php echo $_SESSION['ses_address']; ?>
                          </p>
                     </div>
                 </div>
@@ -72,10 +93,10 @@ body {
                 </div>
                 <div class="row">
                     
-                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="images/photo-1.avif" alt="" class="img-fluid rounded shadow-sm"></div>              
-                    <div class="col-lg-6 mb-2 pl-lg-1"><img src="images/photo-2.avif" alt="" class="img-fluid rounded shadow-sm"></div>                
-                    <div class="col-lg-6 pr-lg-1 mb-2"><img src="images/photo-3.avif" alt="" class="img-fluid rounded shadow-sm"></div>
-                    <div class="col-lg-6 pl-lg-1"><img src="images/photo-4.avif" alt="" class="img-fluid rounded shadow-sm"></div>
+                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="images/1.jpg" alt="" class="img-fluid rounded shadow-sm"></div>              
+                    <div class="col-lg-6 mb-2 pl-lg-1"><img src="images/2.jpg" alt="" class="img-fluid rounded shadow-sm"></div>                
+                    <div class="col-lg-6 pr-lg-1 mb-2"><img src="images/3.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
+                    <div class="col-lg-6 pl-lg-1"><img src="images/4.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
                 </div> 
             </div>
 
